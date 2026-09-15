@@ -54,7 +54,14 @@ plt.ylabel("MAE")
 plt.legend()
 plt.show()
 
+plt.title("真实值 vs 预测值")
+plt.plot([y_test.min(),y_test.max()],[y_test.min(),y_test.max()],'r-',alpha=0.3,label='基准线')
+plt.xlabel("真实值")
+plt.ylabel("预测值")
 pred=model.predict(x_test)
+plt.scatter(y_test,pred)
+plt.legend()
+plt.show()
 
 print("自动停在第", model.best_iteration_, "棵树")#在建了多少颗树是验证误差最小，图像最低点
 print("测试集 MAE:", mean_absolute_error(y_test, pred))#最后使用测试集
